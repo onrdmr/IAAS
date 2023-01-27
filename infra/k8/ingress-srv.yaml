@@ -19,16 +19,23 @@ spec:
                   number: 4000
           - path: /posts
             pathType: Prefix
-              backend:
-                service:
-                  name: query-srv
-                  port:
-                    number: 4002
+            backend:
+              service:
+                name: query-srv
+                port:
+                  number: 4002
           - path: /posts/?(.*)/comments
             pathType: Prefix
-              backend:
-                service:
-                  name: comments-srv
-                  port:
-                    number: 4001
+            backend:
+              service:
+                name: comments-srv
+                port:
+                  number: 4001
+          - path: /?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: client-srv
+                port:
+                  number: 3000
                     
